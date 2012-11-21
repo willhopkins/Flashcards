@@ -4,7 +4,7 @@ public class Card {
 	private String[] card = new String[4];
 	String delimiter = ",";
 	
-	public Card(String line){card = line.split(delimiter);}
+	public Card(String line){card = line.replaceAll(", ",",").split(delimiter);}
 
 	public String[] getCard(){return this.card;}
 	

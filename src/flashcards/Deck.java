@@ -17,13 +17,15 @@ import java.util.List;
 
 public class Deck {
 	List<Card> deck = new ArrayList<Card>();
-	FileInputStream fstreamI; FileOutputStream fstreamO;
+	FileInputStream fstreamI; 
+	FileOutputStream fstreamO;
+	String commonPath;
 	
 	public Deck(String filepath){
 		
 		try {
-			fstreamI = new FileInputStream(filepath);
-			fstreamO = new FileOutputStream(filepath);
+			commonPath = filepath;
+			fstreamI = new FileInputStream(commonPath);
 			BufferedReader br = new BufferedReader(new InputStreamReader(new DataInputStream(fstreamI)));
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null){
@@ -36,6 +38,7 @@ public class Deck {
 	public void writeDeck(List<Card> deck){
 		
 		try{
+			fstreamO = new FileOutputStream(commonPath);
 			BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(new DataOutputStream(fstreamO)));
 			for (int i = 0; i < this.deck.size(); i++){
 				wr.write(Arrays.toString(this.getCard(i).getCard()));
