@@ -30,10 +30,15 @@ public class BuildModel {
 		}
 	}
 	
-	public void stepThroughCards(){
+	public void nextCard(){
 		currentPos++;
 		currentCard = this.deck.getDeck().get(currentPos);		
 	}
+
+    public void prevCard(){
+        currentPos--;
+        currentCard = this.deck.getDeck().get(currentPos);
+    }
 	
 	public void writeOut(){
 		this.deck.writeDeck();
