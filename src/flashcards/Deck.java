@@ -35,13 +35,15 @@ public class Deck {
 		}catch (Exception e){System.err.println("Error: " + e.getMessage());}
 	}
 	
-	public void writeDeck(List<Card> deck){
+	public void writeDeck(){
 		
 		try{
 			fstreamO = new FileOutputStream(commonPath);
 			BufferedWriter wr = new BufferedWriter(new OutputStreamWriter(new DataOutputStream(fstreamO)));
 			for (int i = 0; i < this.deck.size(); i++){
-				wr.write(Arrays.toString(this.getCard(i).getCard()));
+				String rawline = Arrays.toString(this.getCard(i).getCard());
+				String cleanLine = rawline.substring(1, rawline.length()-1);
+				wr.write(cleanLine);
 				wr.newLine();
 			}
 			wr.flush(); 
@@ -51,6 +53,9 @@ public class Deck {
 	
 	public List<Card> getDeck(){return this.deck;}
 	
+	public void setDeck(Deck newDeck){this.deck = newDeck.getDeck();}
+	
 	public Card getCard(int pos){return this.deck.get(pos);}
+	
 	
 }

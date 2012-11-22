@@ -20,12 +20,12 @@ public class DeckTest {
 		tl2 = "Harrisburg,Pennsylvania,1,2";
 		tl3 = "Sacramento,California,1,2";
 		tl4 = "Olympia,Washington,1,2";
-		tl5 = "Trenton,NewJersey,1,2";
+		tl5 = "Trenton,New Jersey,1,2";
 		tl6 = "Lansing,Michigan,1,2";
 		tl7 = "Columbus,Ohio,1,2";
-		tl8 = "Albany,NewYork,1,2";
+		tl8 = "Albany,New York,1,2";
 		tl9 = "Hartford,Connecticut,1,2";
-		tl10 = "Providence,RhodeIsland,1,2";
+		tl10 = "Providence,Rhode Island,1,2";
 		c1 = new Card(tl1);
 		c2 = new Card(tl2);
 		c3 = new Card(tl3);
@@ -47,6 +47,14 @@ public class DeckTest {
 		dummyDeck.add(8, c9);
 		dummyDeck.add(9, c10);		
 	}
+	
+	@Test
+	public void testGetCard() {
+		Deck exampleDeck = new Deck("/Users/ryansloan/Desktop/capitals.txt");
+		assertEquals(Arrays.toString(dummyDeck.get(0).getCard()), Arrays.toString(exampleDeck.getCard(0).getCard()));
+		assertEquals(Arrays.toString(dummyDeck.get(1).getCard()), Arrays.toString(exampleDeck.getCard(1).getCard()));
+		assertEquals(Arrays.toString(dummyDeck.get(2).getCard()), Arrays.toString(exampleDeck.getCard(2).getCard()));
+	}
 
 	@Test
 	public void testDeck() {
@@ -64,19 +72,13 @@ public class DeckTest {
 		assertEquals(Arrays.toString(dummyDeck.get(9).getCard()), Arrays.toString(exampleDeck.getCard(9).getCard()));
 	}
 
-	@Test
+/*	@Test
 	public void testWriteDeck() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetDeck() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetCard() {
-		fail("Not yet implemented");
-	}
+		Deck exampleDeck = new Deck("/Users/ryansloan/Desktop/capitals.txt");
+		Deck exampleDeck2 = new Deck("/Users/ryansloan/Desktop/capitals2.txt");
+		assertThat(exampleDeck, is(not(exampleDeck2)));
+		exampleDeck.setDeck(exampleDeck2);
+		exampleDeck.writeDeck();		
+	}*/
 
 }
